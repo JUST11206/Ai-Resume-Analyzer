@@ -1,0 +1,278 @@
+{% extends "base.html" %}
+
+{% block title %}
+AI Resume Analysis
+{% endblock %}
+
+
+{% block content %}
+
+<div class="result-container">
+
+
+    <div class="result-header">
+
+        <span class="badge">
+            AI CAREER ANALYSIS
+        </span>
+
+        <h1>
+            {{ result.career_goal }}
+        </h1>
+
+        <p>
+            {{ result.summary }}
+        </p>
+
+    </div>
+
+
+    <!-- SCORE -->
+
+    <section class="score-grid">
+
+        <div class="score-card">
+
+            <h3>
+                Resume Score
+            </h3>
+
+            <div class="score">
+                {{ result.resume_score }}
+                <small>/100</small>
+            </div>
+
+        </div>
+
+
+        <div class="score-card">
+
+            <h3>
+                Career Readiness
+            </h3>
+
+            <div class="score">
+                {{ result.career_readiness }}
+                <small>%</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STRONG SKILLS -->
+
+    <section class="result-section">
+
+        <h2>
+            ✅ Strong Skills
+        </h2>
+
+        <div class="tag-container">
+
+            {% for skill in result.strong_skills %}
+
+                <span class="tag">
+                    {{ skill }}
+                </span>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- MISSING SKILLS -->
+
+    <section class="result-section">
+
+        <h2>
+            ❌ Missing Skills
+        </h2>
+
+        <div class="tag-container">
+
+            {% for skill in result.missing_skills %}
+
+                <span class="tag missing">
+                    {{ skill }}
+                </span>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- STRENGTHS -->
+
+    <section class="result-section">
+
+        <h2>
+            💪 Strengths
+        </h2>
+
+        <ul>
+
+            {% for item in result.strengths %}
+
+                <li>
+                    {{ item }}
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </section>
+
+
+    <!-- WEAKNESSES -->
+
+    <section class="result-section">
+
+        <h2>
+            ⚠️ Weaknesses
+        </h2>
+
+        <ul>
+
+            {% for item in result.weaknesses %}
+
+                <li>
+                    {{ item }}
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </section>
+
+
+    <!-- RECOMMENDATIONS -->
+
+    <section class="result-section">
+
+        <h2>
+            🎯 Recommended Actions
+        </h2>
+
+        <div class="recommendations">
+
+            {% for item in result.recommendations %}
+
+                <div class="recommendation-card">
+
+                    <span>
+                        {{ loop.index }}
+                    </span>
+
+                    <p>
+                        {{ item }}
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- ROADMAP -->
+
+    <section class="result-section">
+
+        <h2>
+            🗺️ Your Career Roadmap
+        </h2>
+
+
+        <div class="roadmap">
+
+            {% for step in result.roadmap %}
+
+                <div class="roadmap-item">
+
+                    <div class="step-number">
+
+                        {{ step.step }}
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            {{ step.title }}
+                        </h3>
+
+                        <p>
+                            {{ step.description }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT SUGGESTIONS -->
+
+    <section class="result-section">
+
+        <h2>
+            🚀 Project Suggestions
+        </h2>
+
+        <ul>
+
+            {% for project in result.project_suggestions %}
+
+                <li>
+                    {{ project }}
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </section>
+
+
+    <!-- RESUME IMPROVEMENTS -->
+
+    <section class="result-section">
+
+        <h2>
+            ✨ Resume Improvements
+        </h2>
+
+        <ul>
+
+            {% for improvement in result.resume_improvements %}
+
+                <li>
+                    {{ improvement }}
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </section>
+
+
+</div>
+
+{% endblock %}

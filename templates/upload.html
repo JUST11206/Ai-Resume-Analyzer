@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}
+Analyze Resume
+{% endblock %}
+
+
+{% block content %}
+
+<div class="upload-container">
+
+    <div class="upload-card">
+
+        <h1>
+            Analyze Your Resume
+        </h1>
+
+        <p>
+            Upload your resume and tell us where
+            you want your career to go.
+        </p>
+
+
+        <form
+            action="{{ url_for('resume.upload') }}"
+            method="POST"
+            enctype="multipart/form-data"
+            onsubmit="showProcessing()"
+        >
+
+            <label>
+                Resume PDF
+            </label>
+
+            <input
+                type="file"
+                name="resume"
+                accept=".pdf"
+                required
+            >
+
+
+            <label>
+                🎯 What is your career goal?
+            </label>
+
+            <textarea
+                name="career_goal"
+                placeholder="Example: I want to become a Machine Learning Engineer..."
+                required
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="primary-btn"
+            >
+
+                Analyze Resume
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<div id="processing"
+     class="processing hidden">
+
+    <div class="loader"></div>
+
+    <h2>
+        AI is analyzing your resume...
+    </h2>
+
+    <p>
+        This may take a few seconds.
+    </p>
+
+</div>
+
+{% endblock %}
